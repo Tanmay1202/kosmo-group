@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  /* Group Neutral & Automotive Palette */
+  --color-group-dark: #0d0f12;
+  --color-group-charcoal: #15181e;
+  --color-group-surface: #1e222b;
+  --color-group-border: #2b303c;
+  --color-group-muted: #8b92a0;
+  
+  /* Brand-neutral Group Accent: Brushed Warm Titanium / Champagne */
+  --color-group-accent: #d4af37;
+  --color-group-accent-hover: #b89628;
+
+  /* Sibling Brand Reference Accents (used ONLY in brand cards and badges) */
+  --color-tata: #2334f5;
+  --color-hero: #ee2326;
+
+  /* Typography Variables */
+  --font-display: var(--font-display), system-ui, sans-serif;
+  --font-body: var(--font-body), system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: #0a0c10;
+    color: #f1f5f9;
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  /* Accessible focus ring */
+  *:focus-visible {
+    outline: 2px solid #d4af37;
+    outline-offset: 2px;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
