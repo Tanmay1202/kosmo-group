@@ -1,5 +1,3 @@
-declare const process: { env: Record<string, string | undefined> };
-
 export type Brand = {
   slug: "tata" | "hero" | (string & {});
   name: string; // e.g. "Kosmo Tata"
@@ -12,32 +10,15 @@ export type Brand = {
   description?: string;
 };
 
+export const TATA_VERCEL_URL = "https://kosmo-tata.vercel.app";
+export const HERO_VERCEL_URL = "https://kosmo-hero.vercel.app";
+
 export function getTataUrl(): string {
-  if (process.env.NEXT_PUBLIC_TATA_URL && !process.env.NEXT_PUBLIC_TATA_URL.includes("<")) {
-    return process.env.NEXT_PUBLIC_TATA_URL;
-  }
-  const domain = process.env.NEXT_PUBLIC_GROUP_DOMAIN;
-  if (domain && !domain.includes("<")) {
-    return `https://tata.${domain}`;
-  }
-  if (typeof process !== "undefined" && process.env.NODE_ENV === "development") {
-    return "http://localhost:3001";
-  }
-  return "https://kosmo-tata.vercel.app";
+  return TATA_VERCEL_URL;
 }
 
 export function getHeroUrl(): string {
-  if (process.env.NEXT_PUBLIC_HERO_URL && !process.env.NEXT_PUBLIC_HERO_URL.includes("<")) {
-    return process.env.NEXT_PUBLIC_HERO_URL;
-  }
-  const domain = process.env.NEXT_PUBLIC_GROUP_DOMAIN;
-  if (domain && !domain.includes("<")) {
-    return `https://hero.${domain}`;
-  }
-  if (typeof process !== "undefined" && process.env.NODE_ENV === "development") {
-    return "http://localhost:5173";
-  }
-  return "https://kosmo-hero.vercel.app";
+  return HERO_VERCEL_URL;
 }
 
 export const BRANDS: Brand[] = [
@@ -45,7 +26,7 @@ export const BRANDS: Brand[] = [
     slug: "tata",
     name: "Kosmo Tata",
     tagline: "Nothing's Too Far.",
-    url: getTataUrl(),
+    url: TATA_VERCEL_URL,
     accent: "#2334f5",
     services: ["New Cars", "Doorstep Test Drive", "Authorized Service", "Exchange", "Car Finance"],
     enquiryRecipients: ["LEADS_TO_TATA"],
@@ -56,7 +37,7 @@ export const BRANDS: Brand[] = [
     slug: "hero",
     name: "Kosmo Hero",
     tagline: "Punjab’s premier destination for Hero MotoCorp two-wheelers.",
-    url: getHeroUrl(),
+    url: HERO_VERCEL_URL,
     accent: "#ee2326",
     services: ["Motorcycles", "Scooters", "Instant Test Ride", "Joyride Workshop", "Hero Sure Exchange", "Hero FinCorp"],
     enquiryRecipients: ["LEADS_TO_HERO"],

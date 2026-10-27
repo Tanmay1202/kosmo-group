@@ -36,13 +36,13 @@ test.describe("Kosmo Group Hub - E2E QA Acceptance Suite", () => {
     const tataCard = page.locator("div").filter({ hasText: /Kosmo Tata/i }).first();
     await expect(tataCard).toBeVisible();
     const tataLink = page.getByRole("link", { name: /Visit Kosmo Tata/i });
-    expect(await tataLink.getAttribute("href")).toMatch(/(tata|3001)/i);
+    expect(await tataLink.getAttribute("href")).toContain("kosmo-tata.vercel.app");
 
     // Hero Brand Card
     const heroCard = page.locator("div").filter({ hasText: /Kosmo Hero/i }).first();
     await expect(heroCard).toBeVisible();
     const heroLink = page.getByRole("link", { name: /Visit Kosmo Hero/i });
-    expect(await heroLink.getAttribute("href")).toMatch(/(hero|5173)/i);
+    expect(await heroLink.getAttribute("href")).toContain("kosmo-hero.vercel.app");
   });
 
   test("3. Locations directory filter by brand and city", async ({ page }) => {

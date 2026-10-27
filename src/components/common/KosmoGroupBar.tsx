@@ -4,30 +4,10 @@ import type { GroupBarProps } from "./types";
 declare const process: { env: Record<string, string | undefined> };
 
 const getDefaultTataUrl = (): string => {
-  if (typeof process !== "undefined" && process.env?.NEXT_PUBLIC_TATA_URL && !process.env.NEXT_PUBLIC_TATA_URL.includes("<")) {
-    return process.env.NEXT_PUBLIC_TATA_URL;
-  }
-  const domain = typeof process !== "undefined" ? process.env?.NEXT_PUBLIC_GROUP_DOMAIN : undefined;
-  if (domain && !domain.includes("<")) {
-    return `https://tata.${domain}`;
-  }
-  if (typeof process !== "undefined" && process.env?.NODE_ENV === "development") {
-    return "http://localhost:3001";
-  }
   return "https://kosmo-tata.vercel.app";
 };
 
 const getDefaultHeroUrl = (): string => {
-  if (typeof process !== "undefined" && process.env?.NEXT_PUBLIC_HERO_URL && !process.env.NEXT_PUBLIC_HERO_URL.includes("<")) {
-    return process.env.NEXT_PUBLIC_HERO_URL;
-  }
-  const domain = typeof process !== "undefined" ? process.env?.NEXT_PUBLIC_GROUP_DOMAIN : undefined;
-  if (domain && !domain.includes("<")) {
-    return `https://hero.${domain}`;
-  }
-  if (typeof process !== "undefined" && process.env?.NODE_ENV === "development") {
-    return "http://localhost:5173";
-  }
   return "https://kosmo-hero.vercel.app";
 };
 
